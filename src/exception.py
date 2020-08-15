@@ -1,0 +1,2 @@
+class ClipError(Exception):
+    pass
