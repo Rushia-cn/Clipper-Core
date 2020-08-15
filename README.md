@@ -23,7 +23,7 @@ audio from most mainstream websites.
 ## Directories
 ``/src/`` - Source code  
 ``/src/storage`` - downloaded audio file, in `opus` format  
-``/src/trimmed`` - trimmed audio file, in `mp3` format
+``/src/trimmed`` - trimmed audio file, in `mp3` format  
 ``/src/normalized`` - normalized audio file  
 ``/clips.lock`` - all `Clip` will be stored into this file to resume the breakpoint  
 ``/bat`` - file with multiple commands for `main.py` to use. 
