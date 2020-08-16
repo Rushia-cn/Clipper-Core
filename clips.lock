@@ -1,1 +1,156 @@
-{"eb06d4": {"url": "https://youtu.be/_6_gwZd-HEE", "start": "00:10:58", "end": "00:11:00", "uid": "eb06d4", "download_path": "storage/eb06d4.opus", "trimmed_path": "trimmed/eb06d4.mp3", "normalized_path": "normalized/eb06d4.mp3", "file_url": "https://f002.backblazeb2.com/file/RushiaBtn/eb06d4.mp3", "published": true}, "b84998": {"url": "https://youtu.be/JwS1UNYj-oY", "start": "00:02:11", "end": "00:02:14", "uid": "b84998", "download_path": "storage/b84998.opus", "trimmed_path": "trimmed/b84998.mp3", "normalized_path": "normalized/b84998.mp3", "file_url": "https://f002.backblazeb2.com/file/RushiaBtn/b84998.mp3", "published": true}, "ae364f": {"url": "https://youtu.be/DXEHmmxe88c", "start": "00:04:02", "end": "00:04:04", "uid": "ae364f", "download_path": "storage/ae364f.opus", "trimmed_path": "trimmed/ae364f.mp3", "normalized_path": "normalized/ae364f.mp3", "file_url": "https://f002.backblazeb2.com/file/RushiaBtn/ae364f.mp3", "published": true}, "e06cbf": {"url": "https://youtu.be/_6_gwZd-HEE", "start": "00:06:50", "end": "00:06:52", "uid": "e06cbf", "download_path": "storage/eb06d4.opus", "trimmed_path": "trimmed/e06cbf.mp3", "normalized_path": "normalized/e06cbf.mp3", "file_url": "https://f002.backblazeb2.com/file/RushiaBtn/e06cbf.mp3", "published": true}, "e9cb13": {"url": "https://youtu.be/_6_gwZd-HEE", "start": "00:09:19", "end": "00:09:21", "uid": "e9cb13", "download_path": "storage/eb06d4.opus", "trimmed_path": "trimmed/e9cb13.mp3", "normalized_path": "normalized/e9cb13.mp3", "file_url": "https://f002.backblazeb2.com/file/RushiaBtn/e9cb13.mp3", "published": true}, "9a91bd": {"url": "https://youtu.be/_6_gwZd-HEE", "start": "00:10:55", "end": "00:10:57", "uid": "9a91bd", "download_path": "storage/eb06d4.opus", "trimmed_path": "trimmed/9a91bd.mp3", "normalized_path": "normalized/9a91bd.mp3", "file_url": "https://f002.backblazeb2.com/file/RushiaBtn/9a91bd.mp3", "published": true}, "7fdc1d": {"url": "https://youtu.be/_6_gwZd-HEE", "start": "00:12:39", "end": "00:12:40", "uid": "7fdc1d", "download_path": "storage/eb06d4.opus", "trimmed_path": "trimmed/7fdc1d.mp3", "normalized_path": "normalized/7fdc1d.mp3", "file_url": "https://f002.backblazeb2.com/file/RushiaBtn/7fdc1d.mp3", "published": true}, "728846": {"url": "https://www.bilibili.com/video/BV1RJ411H7ED", "start": "00:02:36", "end": "00:02:39", "uid": "728846", "download_path": "storage/728846.opus", "trimmed_path": "trimmed/728846.mp3", "normalized_path": "normalized/728846.mp3", "file_url": "https://f002.backblazeb2.com/file/RushiaBtn/728846.mp3", "published": true}, "6dec81": {"url": "https://www.bilibili.com/video/BV1RJ411H7ED", "start": "00:03:24", "end": "00:03:26", "uid": "6dec81", "download_path": "storage/728846.opus", "trimmed_path": "trimmed/6dec81.mp3", "normalized_path": "normalized/6dec81.mp3", "file_url": "https://f002.backblazeb2.com/file/RushiaBtn/6dec81.mp3", "published": true}, "ce30ae": {"url": "https://www.bilibili.com/video/BV1RJ411H7ED", "start": "00:04:24", "end": "00:04:25", "uid": "ce30ae", "download_path": "storage/728846.opus", "trimmed_path": "trimmed/ce30ae.mp3", "normalized_path": "normalized/ce30ae.mp3", "file_url": "https://f002.backblazeb2.com/file/RushiaBtn/ce30ae.mp3", "published": true}, "f6058f": {"url": "https://www.bilibili.com/video/BV1RJ411H7ED", "start": "00:03:48", "end": "00:03:50", "uid": "f6058f", "download_path": "storage/728846.opus", "trimmed_path": "trimmed/f6058f.mp3", "normalized_path": "normalized/f6058f.mp3", "file_url": "https://f002.backblazeb2.com/file/RushiaBtn/f6058f.mp3", "published": true}, "d5f5a4": {"url": "https://www.bilibili.com/video/BV1RJ411H7ED", "start": "00:03:53", "end": "00:03:59", "uid": "d5f5a4", "download_path": "storage/728846.opus", "trimmed_path": "trimmed/d5f5a4.mp3", "normalized_path": "normalized/d5f5a4.mp3", "file_url": "https://f002.backblazeb2.com/file/RushiaBtn/d5f5a4.mp3", "published": true}}
+{
+    "eb06d4": {
+        "url": "https://youtu.be/_6_gwZd-HEE",
+        "start": "00:10:58",
+        "end": "00:11:00",
+        "uid": "eb06d4",
+        "download_path": "storage/eb06d4.opus",
+        "trimmed_path": "trimmed/eb06d4.mp3",
+        "normalized_path": "normalized/eb06d4.mp3",
+        "file_url": "https://f002.backblazeb2.com/file/RushiaBtn/eb06d4.mp3",
+        "published": true
+    },
+    "b84998": {
+        "url": "https://youtu.be/JwS1UNYj-oY",
+        "start": "00:02:11",
+        "end": "00:02:14",
+        "uid": "b84998",
+        "download_path": "storage/b84998.opus",
+        "trimmed_path": "trimmed/b84998.mp3",
+        "normalized_path": "normalized/b84998.mp3",
+        "file_url": "https://f002.backblazeb2.com/file/RushiaBtn/b84998.mp3",
+        "published": true
+    },
+    "ae364f": {
+        "url": "https://youtu.be/DXEHmmxe88c",
+        "start": "00:04:02",
+        "end": "00:04:04",
+        "uid": "ae364f",
+        "download_path": "storage/ae364f.opus",
+        "trimmed_path": "trimmed/ae364f.mp3",
+        "normalized_path": "normalized/ae364f.mp3",
+        "file_url": "https://f002.backblazeb2.com/file/RushiaBtn/ae364f.mp3",
+        "published": true
+    },
+    "e06cbf": {
+        "url": "https://youtu.be/_6_gwZd-HEE",
+        "start": "00:06:50",
+        "end": "00:06:52",
+        "uid": "e06cbf",
+        "download_path": "storage/eb06d4.opus",
+        "trimmed_path": "trimmed/e06cbf.mp3",
+        "normalized_path": "normalized/e06cbf.mp3",
+        "file_url": "https://f002.backblazeb2.com/file/RushiaBtn/e06cbf.mp3",
+        "published": true
+    },
+    "e9cb13": {
+        "url": "https://youtu.be/_6_gwZd-HEE",
+        "start": "00:09:19",
+        "end": "00:09:21",
+        "uid": "e9cb13",
+        "download_path": "storage/eb06d4.opus",
+        "trimmed_path": "trimmed/e9cb13.mp3",
+        "normalized_path": "normalized/e9cb13.mp3",
+        "file_url": "https://f002.backblazeb2.com/file/RushiaBtn/e9cb13.mp3",
+        "published": true
+    },
+    "9a91bd": {
+        "url": "https://youtu.be/_6_gwZd-HEE",
+        "start": "00:10:55",
+        "end": "00:10:57",
+        "uid": "9a91bd",
+        "download_path": "storage/eb06d4.opus",
+        "trimmed_path": "trimmed/9a91bd.mp3",
+        "normalized_path": "normalized/9a91bd.mp3",
+        "file_url": "https://f002.backblazeb2.com/file/RushiaBtn/9a91bd.mp3",
+        "published": true
+    },
+    "7fdc1d": {
+        "url": "https://youtu.be/_6_gwZd-HEE",
+        "start": "00:12:39",
+        "end": "00:12:40",
+        "uid": "7fdc1d",
+        "download_path": "storage/eb06d4.opus",
+        "trimmed_path": "trimmed/7fdc1d.mp3",
+        "normalized_path": "normalized/7fdc1d.mp3",
+        "file_url": "https://f002.backblazeb2.com/file/RushiaBtn/7fdc1d.mp3",
+        "published": true
+    },
+    "728846": {
+        "url": "https://www.bilibili.com/video/BV1RJ411H7ED",
+        "start": "00:02:36",
+        "end": "00:02:39",
+        "uid": "728846",
+        "download_path": "storage/728846.opus",
+        "trimmed_path": "trimmed/728846.mp3",
+        "normalized_path": "normalized/728846.mp3",
+        "file_url": "https://f002.backblazeb2.com/file/RushiaBtn/728846.mp3",
+        "published": true
+    },
+    "6dec81": {
+        "url": "https://www.bilibili.com/video/BV1RJ411H7ED",
+        "start": "00:03:24",
+        "end": "00:03:26",
+        "uid": "6dec81",
+        "download_path": "storage/728846.opus",
+        "trimmed_path": "trimmed/6dec81.mp3",
+        "normalized_path": "normalized/6dec81.mp3",
+        "file_url": "https://f002.backblazeb2.com/file/RushiaBtn/6dec81.mp3",
+        "published": true
+    },
+    "ce30ae": {
+        "url": "https://www.bilibili.com/video/BV1RJ411H7ED",
+        "start": "00:04:24",
+        "end": "00:04:25",
+        "uid": "ce30ae",
+        "download_path": "storage/728846.opus",
+        "trimmed_path": "trimmed/ce30ae.mp3",
+        "normalized_path": "normalized/ce30ae.mp3",
+        "file_url": "https://f002.backblazeb2.com/file/RushiaBtn/ce30ae.mp3",
+        "published": true
+    },
+    "f6058f": {
+        "url": "https://www.bilibili.com/video/BV1RJ411H7ED",
+        "start": "00:03:48",
+        "end": "00:03:50",
+        "uid": "f6058f",
+        "download_path": "storage/728846.opus",
+        "trimmed_path": "trimmed/f6058f.mp3",
+        "normalized_path": "normalized/f6058f.mp3",
+        "file_url": "https://f002.backblazeb2.com/file/RushiaBtn/f6058f.mp3",
+        "published": true
+    },
+    "d5f5a4": {
+        "url": "https://www.bilibili.com/video/BV1RJ411H7ED",
+        "start": "00:03:53",
+        "end": "00:03:59",
+        "uid": "d5f5a4",
+        "download_path": "storage/728846.opus",
+        "trimmed_path": "trimmed/d5f5a4.mp3",
+        "normalized_path": "normalized/d5f5a4.mp3",
+        "file_url": "https://f002.backblazeb2.com/file/RushiaBtn/d5f5a4.mp3",
+        "published": true
+    },
+    "f2b1ca": {
+        "url": "https://www.bilibili.com/video/BV1RJ411H7ED",
+        "start": "0:4:24.600",
+        "end": "0:4:25.500",
+        "uid": "f2b1ca",
+        "download_path": "storage/728846.opus",
+        "trimmed_path": "trimmed/f2b1ca.mp3",
+        "normalized_path": "normalized/f2b1ca.mp3",
+        "file_url": null,
+        "published": false
+    },
+    "799f7a": {
+        "url": "https://www.bilibili.com/video/BV1RJ411H7ED",
+        "start": "0:4:24.300",
+        "end": "0:4:25.300",
+        "uid": "799f7a",
+        "download_path": "storage/728846.opus",
+        "trimmed_path": "trimmed/799f7a.mp3",
+        "normalized_path": "normalized/799f7a.mp3",
+        "file_url": "https://f002.backblazeb2.com/file/RushiaBtn/799f7a.mp3",
+        "published": true
+    }
+}

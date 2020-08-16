@@ -4,10 +4,10 @@ import uuid
 import json
 import atexit
 import subprocess as sp
+from pathlib import Path
 from logging import getLogger
 from typing import Optional, Dict, AnyStr
 from dataclasses import dataclass, field, asdict
-from pathlib import Path
 from time import time
 from functools import wraps
 
@@ -49,15 +49,15 @@ class Clip:
     start: str = "0:0:0"
     end: str = None
     uid: str = field(default_factory=gen_id)
-    download_path: Path = None
-    trimmed_path: Path = None
-    normalized_path: Path = None
+    download_path: str = None
+    trimmed_path: str = None
+    normalized_path: str = None
     file_url: str = None
     published: bool = False
 
 
 class Clipper:
-    _time_pattern = re.compile(r"\d*:[0-5]\d?:[0-5]\d?")
+    _time_pattern = re.compile(r"\d*:[0-5]\d?:[0-5]\d?(.\d{3})?")
     _local_clips_path = Path("../clips.lock")
     instance = None
 
@@ -68,7 +68,7 @@ class Clipper:
             cls.instance = obj
             return obj
         else:
-            log("Instamce of Clipper already exists, return it")
+            log("Instance of Clipper already exists, return it")
             return cls.instance
 
     def __init__(self):
@@ -143,7 +143,7 @@ class Clipper:
         }) as ytdl:
             ytdl.download([clip.url])
         print("done")
-        clip.download_path = Path(download_path % {'ext': 'opus'})
+        clip.download_path = download_path % {'ext': 'opus'}
         return True
 
     @log_this
@@ -169,7 +169,7 @@ class Clipper:
         if code != 0:
             raise ClipError(res.stderr)
         else:
-            clip.trimmed_path = Path(trimmed_path)
+            clip.trimmed_path = trimmed_path
 
     @log_this
     def normalize_clip(self, uid):
@@ -186,17 +186,18 @@ class Clipper:
     def upload_clip(self, uid):
         clip = self.search(uid)
         full_name = f"{clip.uid}.mp3"
-        self._bucket.upload_local_file(local_file=str(clip.normalized_path.absolute()),
+        self._bucket.upload_local_file(local_file=clip.normalized_path,
                                        file_name=full_name)
         clip.file_url = self._file_link_template.format(full_name)
 
     @log_this
-    def generate(self, url, start, end):
+    def generate(self, url, start, end, upload=True):
         uid = self.new_clip(url, start, end)
         self.download_clip(uid)
         self.trim_clip(uid)
         self.normalize_clip(uid)
-        self.upload_clip(uid)
+        if upload:
+            self.upload_clip(uid)
         return uid
 
     @log_this
@@ -214,8 +215,11 @@ class Clipper:
         return asdict(self.search(uid))
 
     def save(self):
+        if not self.clips:
+            log("Clipper.clips is either not loaded or does not exist, quit without saving")
+            return
         with open(self._local_clips_path, "w") as f:
-            json.dump({clip.uid: asdict(clip) for clip in self.clips.values()}, f)
+            json.dump({clip.uid: asdict(clip) for clip in self.clips.values()}, f, indent=4)
 
 
 class ClipsMeta:

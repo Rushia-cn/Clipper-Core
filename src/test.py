@@ -1,4 +1,6 @@
-from inquirer import Confirm, prompt
+from src.clipper import Clipper
+import json
 
-a = prompt([Confirm("123")])
-print(a)
+
+a = Clipper()
+a.publish_clip("799f7a", 'memes', dict(zh="呐", en="Ne!"))
