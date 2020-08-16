@@ -30,6 +30,7 @@ def log_this(func):
     def inner(*args, **kwargs):
         log(func.__name__, "called")
         return func(*args, **kwargs)
+
     return inner
 
 

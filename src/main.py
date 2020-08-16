@@ -9,14 +9,16 @@ basicConfig(level="INFO")
 
 """
 A bat program read contents from ../bat which contains clipper command like:
-https://youtu.be/_6_gwZd-HEE 0:06:52 00:06:53 test_category zh:rua jp:aaa en:fff
-^Url                         ^Start  ^End     ^cat          ^names(locale:name)
+https://youtu.be/_6_gwZd-HEE 0:06:52 00:06:53 test_category zh:"rua" jp:"aaa" en:"fff"
+^Url                         ^Start  ^End     ^cat          ^names(locale:"name")
 """
 
-pattern = re.compile(r"(https?://\w*?.\w+?\.\w{2,}/.*?)\s(\d{1,2}:[0-5]?\d:[0-5]?\d(.\d{3})?\s){2}(\w*?)(\s[a-zA-Z]{2}:\w*)+")
-time_ptrn = re.compile(r"\d{1,2}:[0-5]?\d:[0-5]?\d(.\d{3})?\s\d{1,2}:[0-5]?\d:[0-5]?\d(.\d{3})?")
+pattern = re.compile(r"(https?://\w*?.\w+?\.\w{2,}/.*?)\s"
+                     r"(\d{1,2}:[0-5]?\d:[0-5]?\d(.\d{3})?\s)"
+                     r"(\d{1,2}:[0-5]?\d:[0-5]?\d(.\d{3})?\s)"
+                     r"(\w*?)"
+                     r"(\s[a-zA-Z]{2}:\".*\")+")
 lang_ptrn = re.compile(r"[a-zA-Z]{2}:\".*?\"")
-clipper = Clipper()
 
 
 def inquire(msg, boolean=False):
@@ -32,19 +34,23 @@ def inquire(msg, boolean=False):
 
 
 def parse_line(line):
-    parsed = [x.strip() for x in pattern.match(line).groups()]
+    parsed = pattern.match(line).groups()
+    if not parsed:
+        raise ClipError("Unable to parse")
     url = parsed[0]
-    cat = parsed[3]
-    time = time_ptrn.search(line)[0].split()
-    names = lang_ptrn.findall(line)
+    start = parsed[1].strip()
+    end = parsed[3].strip()
+    cat = parsed[5]
+    names = lang_ptrn.findall(parsed[6])
     name_dict = {}
     for name in names:
         splited = name.strip().replace('"', '').split(":")
         name_dict[splited[0]] = splited[1].strip()
-    return url, cat, time[0].strip(), time[1].strip(), name_dict
+    return url, cat, start, end, name_dict
 
 
-def main(path_to_batch="../bat", yes_to_all=False):
+def main(path_to_batch="../bat", yes_to_all=False, _raise=False):
+    clipper = Clipper()
     start_time = time.time()
     published = 0
     failed = 0
@@ -75,6 +81,8 @@ def main(path_to_batch="../bat", yes_to_all=False):
                 clipper.publish_clip(uid, cat, name)
                 published += 1
             except Exception as e:
+                if _raise:
+                    raise
                 print(e)
                 failed += 1
     print(f"Work finished. {published}/{all} published, {failed}/{all} failed. "
