@@ -1,6 +1,8 @@
 from src.clipper import Clipper
-import json
+from pprint import pprint
 
 
 a = Clipper()
-a.publish_clip("799f7a", 'memes', dict(zh="呐", en="Ne!"))
+for uid, clip in a.meta.clips.items():
+    clip['url'] = f"https://rushia.moe/clips?uid={uid}"
+a.meta.upload()

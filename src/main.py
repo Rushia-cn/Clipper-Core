@@ -1,9 +1,10 @@
 import re
 import os
+import sys
 import time
+
 from logging import basicConfig
-from src.clipper import Clipper
-from src.exception import ClipError
+from clipper import Clipper, ClipError
 
 basicConfig(level="INFO")
 
@@ -57,7 +58,7 @@ def main(path_to_batch="../bat", yes_to_all=False, _raise=False):
     all = 0
     with open(path_to_batch, encoding='utf8') as f:
         for i, line in enumerate(f.readlines()):
-            if not line or line == "\n":
+            if not line or line == "\n" or line.startswith("#"):
                 continue
             all += 1
             try:

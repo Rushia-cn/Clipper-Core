@@ -229,5 +229,38 @@
         "normalized_path": "normalized/dda4a9.mp3",
         "file_url": "https://f002.backblazeb2.com/file/RushiaBtn/dda4a9.mp3",
         "published": true
+    },
+    "f546e0": {
+        "url": "https://b23.tv/OfRM59",
+        "start": "00:00:47",
+        "end": "00:00:51",
+        "uid": "f546e0",
+        "download_path": "storage/f546e0.opus",
+        "trimmed_path": "trimmed/f546e0.mp3",
+        "normalized_path": "normalized/f546e0.mp3",
+        "file_url": "https://rushia.moe/clips?uid=f546e0.mp3",
+        "published": true
+    },
+    "9df643": {
+        "url": "https://www.bilibili.com/video/BV1x7411w7Gm/",
+        "start": "00:00:00",
+        "end": "00:00:09",
+        "uid": "9df643",
+        "download_path": "storage/9df643.opus",
+        "trimmed_path": "trimmed/9df643.mp3",
+        "normalized_path": "normalized/9df643.mp3",
+        "file_url": "https://rushia.moe/clips?uid=9df643.mp3",
+        "published": true
+    },
+    "0fe14c": {
+        "url": "https://www.bilibili.com/video/BV1LD4y1U7ZE",
+        "start": "00:00:11",
+        "end": "00:00:16",
+        "uid": "0fe14c",
+        "download_path": "storage/0fe14c.opus",
+        "trimmed_path": "trimmed/0fe14c.mp3",
+        "normalized_path": "normalized/0fe14c.mp3",
+        "file_url": "https://rushia.moe/clips?uid=0fe14c",
+        "published": true
     }
 }

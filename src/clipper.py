@@ -11,14 +11,16 @@ from dataclasses import dataclass, field, asdict
 from time import time
 from functools import wraps
 
-from src.exception import ClipError
-
 from requests import Session
 from youtube_dl import YoutubeDL
 from ffmpeg_normalize import FFmpegNormalize
 from b2sdk.v1 import InMemoryAccountInfo, B2Api
 
 lg = getLogger("Clipper")
+
+
+class ClipError(Exception):
+    pass
 
 
 def log(*args):
@@ -88,7 +90,7 @@ class Clipper:
         self._api = B2Api(info)
         self._api.authorize_account("production", key_id, app_key)
         self._bucket = self._api.get_bucket_by_name("RushiaBtn")
-        self._file_link_template = "https://f002.backblazeb2.com/file/RushiaBtn/{}"
+        self._file_link_template = "https://rushia.moe/clips?uid={}"
         log("Done initializing Clipper")
 
     @log_this
@@ -189,7 +191,7 @@ class Clipper:
         full_name = f"{clip.uid}.mp3"
         self._bucket.upload_local_file(local_file=clip.normalized_path,
                                        file_name=full_name)
-        clip.file_url = self._file_link_template.format(full_name)
+        clip.file_url = self._file_link_template.format(uid)
 
     @log_this
     def generate(self, url, start, end, upload=True):
@@ -224,7 +226,7 @@ class Clipper:
 
 
 class ClipsMeta:
-    _cf_endpoint = "https://category.rushia.moe"
+    _cf_endpoint = "https://category.rushia.moe/"
 
     def __init__(self, url, token):
         self.s = Session()  # Requests Session for request and upload meta json

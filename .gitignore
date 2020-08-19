@@ -3,6 +3,7 @@ src/normalized
 src/storage
 src/trimmed
 clips.lock
+
 # Created by .ignore support plugin (hsz.mobi)
 ### Python template
 # Byte-compiled / optimized / DLL files
@@ -154,3 +155,4 @@ cython_debug/
 out
 gen
 *.lock
+.run/*
