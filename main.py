@@ -4,7 +4,7 @@ import sys
 import time
 
 from logging import basicConfig
-from clipper import Clipper, ClipError
+from src.clipper import Clipper, ClipError
 
 basicConfig(level="INFO")
 
@@ -50,8 +50,8 @@ def parse_line(line):
     return url, cat, start, end, name_dict
 
 
-def main(path_to_batch="../bat", yes_to_all=False, _raise=False):
-    clipper = Clipper()
+def main(path_to_batch="../bat", yes_to_all=False, _raise=False, dry_run=False):
+    clipper = Clipper() if not dry_run else None
     start_time = time.time()
     published = 0
     failed = 0
@@ -76,6 +76,7 @@ def main(path_to_batch="../bat", yes_to_all=False, _raise=False):
                             clip.start = inquire("Start")
                             clip.end = inquire("End")
                             clipper.trim_clip(uid)
+                            clipper.normalize_clip(uid)
                     else:
                         publish_approved = True
                 clipper.upload_clip(uid)

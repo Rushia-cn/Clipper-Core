@@ -9,6 +9,7 @@ verify_ssl = true
 b2sdk = "*"
 ffmpeg-normalize = "*"
 youtube-dl = "*"
+pyyaml = "*"
 
 [requires]
 python_version = "3.8"

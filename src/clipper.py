@@ -1,43 +1,25 @@
-import os
 import re
-import uuid
 import json
 import atexit
+import logging
 import subprocess as sp
 from pathlib import Path
-from logging import getLogger
 from typing import Optional, Dict, AnyStr
 from dataclasses import dataclass, field, asdict
 from time import time
-from functools import wraps
+
+from src.utils import (
+    log,
+    log_this,
+    gen_id
+)
+from src.config import load_yaml
+from src.exception import ClipError
 
 from requests import Session
 from youtube_dl import YoutubeDL
 from ffmpeg_normalize import FFmpegNormalize
 from b2sdk.v1 import InMemoryAccountInfo, B2Api
-
-lg = getLogger("Clipper")
-
-
-class ClipError(Exception):
-    pass
-
-
-def log(*args):
-    lg.info(f"[Clipper] {' '.join([str(x) for x in args])}")
-
-
-def log_this(func):
-    @wraps(func)
-    def inner(*args, **kwargs):
-        log(func.__name__, "called")
-        return func(*args, **kwargs)
-
-    return inner
-
-
-def gen_id():
-    return str(uuid.uuid4())[:6]
 
 
 @atexit.register
@@ -61,6 +43,12 @@ class Clip:
 
 class Clipper:
     _time_pattern = re.compile(r"\d*:[0-5]\d?:[0-5]\d?(.\d{3})?")
+    _cmd_pattern = re.compile(r"(https?://\w*?.\w+?\.\w{2,}/.*?)\s"
+                              r"(\d{1,2}:[0-5]?\d:[0-5]?\d(.\d{3})?\s)"
+                              r"(\d{1,2}:[0-5]?\d:[0-5]?\d(.\d{3})?\s)"
+                              r"(\w*?)"
+                              r"(\s[a-zA-Z]{2}:\".*\")+")
+    _lang_pattern = re.compile(r"[a-zA-Z]{2}:\".*?\"")
     _local_clips_path = Path("../clips.lock")
     instance = None
 
@@ -77,36 +65,36 @@ class Clipper:
     def __init__(self):
         log("Initializing Clipper")
         self.clips: Dict[AnyStr, Clip] = None
+        self.c = load_yaml()
+        logging.basicConfig(
+            level=self.c["Logging"]["level"],
+            format=self.c["Logging"]["format"]
+        )
         self.load_local_clips()
-        self.meta = ClipsMeta.from_url(os.environ["TOKEN"])
-        key_id = os.environ["B2_KEY_ID"]
-        app_key = os.environ["B2_APP_KEY"]
-        if not (key_id and app_key):
-            raise ClipError("Credential for B2 is needed, "
-                            "set B2_KEY_ID and B2_APP_KEY "
-                            "as environment variable or pass in as arguments")
+        self.meta = ClipsMeta.from_url(
+            self.get_config("MetaSource", "endpoint"),
+            self.get_config("MetaSource", "token")
+        )
+        key_id = self.get_config("B2", "key_id")
+        app_key = self.get_config("B2", "app_key")
         log("Initializing B2")
         info = InMemoryAccountInfo()
         self._api = B2Api(info)
         self._api.authorize_account("production", key_id, app_key)
-        self._bucket = self._api.get_bucket_by_name("RushiaBtn")
-        self._file_link_template = "https://rushia.moe/clips?uid={}"
+        self._bucket = self._api.get_bucket_by_name(
+            self.get_config("B2", "bucket_name")
+        )
+        self._file_link_template = "https://rushia.moe/clips?uid={uid}"
         log("Done initializing Clipper")
 
     @log_this
     def load_local_clips(self):
-        if self._local_clips_path.exists():
-            log("Loading clip info from", self._local_clips_path)
-            with open(self._local_clips_path, "r") as f:
-                self.clips = {k: Clip(**v) for k, v in json.load(f).items()}
-        else:
-            log("Unable to find", self._local_clips_path, "creating")
-            self._local_clips_path.touch()
-            with open(self._local_clips_path, "w") as f:
-                self.clips = dict()
-                json.dump(self.clips, f, indent=4)
+        with open(self.c["FilePaths"]["clips_lock"], "r") as f:
+            self.clips = {k: Clip(**v) for k, v in json.load(f).items()}
 
     def search(self, uid) -> Optional['Clip']:
+        if uid is Clip:
+            return uid
         clip = self.clips.get(uid)
         if not clip:
             raise ClipError(f"Unable to find clip #{uid}")
@@ -134,25 +122,28 @@ class Clipper:
         if clip.download_path and not force:
             log(f"{uid} is already downloaded, pass")
             return
-        download_path = f"storage/{clip.uid}.%(ext)s"
+        download_path = f"{self.get_config('Directories', 'downloaded')}/" \
+                        f"{clip.uid}.%(ext)s"
         with YoutubeDL({
             'format': 'bestaudio/best',
             'postprocessors': [{
                 'key': 'FFmpegExtractAudio',
-                'preferredcodec': 'opus',
+                'preferredcodec':self.get_config("Clips", "storage_codec"),
                 'preferredquality': '192'
             }],
             'outtmpl': download_path
         }) as ytdl:
             ytdl.download([clip.url])
         print("done")
-        clip.download_path = download_path % {'ext': 'opus'}
+        clip.download_path = download_path % \
+                             {'ext': self.get_config("Clips", "storage_ext")}
         return True
 
     @log_this
     def trim_clip(self, uid):
         clip = self.search(uid)
-        trimmed_path = f"trimmed/{uid}.mp3"
+        trimmed_path = f"{self.get_config('Directories', 'trimmed')}" \
+                       f"/{uid}.{self.get_config('Clips', 'trimmed_ext')}"
         cmd = [
             'ffmpeg',
             '-vn',
@@ -178,8 +169,7 @@ class Clipper:
     def normalize_clip(self, uid):
         clip = self.search(uid)
         fn = FFmpegNormalize(normalization_type="rms",
-                             audio_codec="libmp3lame",
-                             target_level=-16)
+                             target_level=-24)
         out = f"normalized/{clip.uid}.mp3"
         fn.add_media_file(clip.trimmed_path, out)
         fn.run_normalization()
@@ -191,7 +181,7 @@ class Clipper:
         full_name = f"{clip.uid}.mp3"
         self._bucket.upload_local_file(local_file=clip.normalized_path,
                                        file_name=full_name)
-        clip.file_url = self._file_link_template.format(uid)
+        clip.file_url = self.get_config("Clips", "file_name").format(uid=uid)
 
     @log_this
     def generate(self, url, start, end, upload=True):
@@ -202,6 +192,29 @@ class Clipper:
         if upload:
             self.upload_clip(uid)
         return uid
+
+    def _parse_cmd(self, cmd):
+        parsed = self._cmd_pattern.match(cmd).groups()
+        if not parsed:
+            raise ClipError("Unable to parse")
+        url = parsed[0]
+        start = parsed[1].strip()
+        end = parsed[3].strip()
+        cat = parsed[5]
+        names = self._lang_pattern.findall(parsed[6])
+        name_dict = {}
+        for name in names:
+            splited = name.strip().replace('"', '').split(":")
+            name_dict[splited[0]] = splited[1].strip()
+        return url, cat, start, end, name_dict
+
+    @log_this
+    def run_cmd(self, cmd, upload=True, publish=False):
+        url, cat, start, end, name_dict = self._parse_cmd(cmd)
+        uid = self.generate(url, start, end, upload)
+        if publish:
+            self.publish_clip(uid, cat, names=name_dict)
+        return url, cat, start, end, name_dict
 
     @log_this
     def publish_clip(self, uid, cat, names):
@@ -214,6 +227,12 @@ class Clipper:
     def put_cat(self, _id, names):
         self.meta.put_cat(_id, names)
 
+    def get_config(self, *args):
+        ret = self.c[args[0]]
+        for arg in args[1:]:
+            ret = ret[arg]
+        return ret
+
     def get_info(self, uid):
         return asdict(self.search(uid))
 
@@ -221,16 +240,15 @@ class Clipper:
         if not self.clips:
             log("Clipper.clips is either not loaded or does not exist, quit without saving")
             return
-        with open(self._local_clips_path, "w") as f:
+        with open(self.get_config("FilePaths", "clips_lock"), "w") as f:
             json.dump({clip.uid: asdict(clip) for clip in self.clips.values()}, f, indent=4)
 
 
 class ClipsMeta:
-    _cf_endpoint = "https://category.rushia.moe/"
 
     def __init__(self, url, token):
         self.s = Session()  # Requests Session for request and upload meta json
-        self.url = url or self._cf_endpoint
+        self.url = url
         self.json = None
         self.categories = {}
         self.clips = {}
@@ -238,14 +256,14 @@ class ClipsMeta:
         self.test_token()
 
     @classmethod
-    def from_url(cls, token, url=None):
+    def from_url(cls, url, token):
         obj = cls(url, token)
         obj.download()
         return obj
 
     @log_this
     def test_token(self):
-        req = self.s.options(self._cf_endpoint, params={'t': self.token})
+        req = self.s.options(self.url, params={'t': self.token})
         if not req.ok:
             raise ClipError("Invalid token")
         return True

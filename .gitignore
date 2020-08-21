@@ -3,6 +3,7 @@ src/normalized
 src/storage
 src/trimmed
 clips.lock
+config.yml
 
 # Created by .ignore support plugin (hsz.mobi)
 ### Python template
