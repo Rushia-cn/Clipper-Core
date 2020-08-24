@@ -350,5 +350,159 @@
         "normalized_path": "normalized/c568e3.mp3",
         "file_url": "https://rushia.moe/clips?uid=c568e3",
         "published": true
+    },
+    "88e62c": {
+        "url": "https://www.bilibili.com/video/BV1h7411t7YU",
+        "start": "00:00:06",
+        "end": "00:00:07",
+        "uid": "88e62c",
+        "download_path": "D:\\Work\\Projects\\Clipper-Core\\src\\storage/88e62c.opus",
+        "trimmed_path": "D:\\Work\\Projects\\Clipper-Core\\src\\trimmed/88e62c.mp3",
+        "normalized_path": null,
+        "file_url": null,
+        "published": false
+    },
+    "bacd25": {
+        "url": "https://www.bilibili.com/video/BV1h7411t7YU",
+        "start": "00:00:06",
+        "end": "00:00:07",
+        "uid": "bacd25",
+        "download_path": "D:\\Work\\Projects\\Clipper-Core\\src\\storage/88e62c.opus",
+        "trimmed_path": "D:\\Work\\Projects\\Clipper-Core\\src\\trimmed/bacd25.mp3",
+        "normalized_path": null,
+        "file_url": null,
+        "published": false
+    },
+    "af69df": {
+        "url": "https://b23.tv/BV1L54y19763 ",
+        "start": "00:00:02",
+        "end": "00:00:04",
+        "uid": "af69df",
+        "download_path": "D:\\Work\\Projects\\Clipper-Core\\src\\storage/af69df.opus",
+        "trimmed_path": "D:\\Work\\Projects\\Clipper-Core\\src\\trimmed/af69df.mp3",
+        "normalized_path": null,
+        "file_url": null,
+        "published": false
+    },
+    "498082": {
+        "url": "https://www.bilibili.com/video/BV1h7411t7YU",
+        "start": "00:00:06",
+        "end": "00:00:07",
+        "uid": "498082",
+        "download_path": "D:\\Work\\Projects\\Clipper-Core\\src\\storage/88e62c.opus",
+        "trimmed_path": "D:\\Work\\Projects\\Clipper-Core\\src\\trimmed/498082.mp3",
+        "normalized_path": null,
+        "file_url": null,
+        "published": false
+    },
+    "69629b": {
+        "url": "https://b23.tv/BV1L54y19763 ",
+        "start": "00:00:02",
+        "end": "00:00:04",
+        "uid": "69629b",
+        "download_path": "D:\\Work\\Projects\\Clipper-Core\\src\\storage/af69df.opus",
+        "trimmed_path": "D:\\Work\\Projects\\Clipper-Core\\src\\trimmed/69629b.mp3",
+        "normalized_path": null,
+        "file_url": null,
+        "published": false
+    },
+    "6e4ba3": {
+        "url": "https://www.bilibili.com/video/BV1h7411t7YU",
+        "start": "00:00:06",
+        "end": "00:00:07",
+        "uid": "6e4ba3",
+        "download_path": "D:\\Work\\Projects\\Clipper-Core\\src\\storage/88e62c.opus",
+        "trimmed_path": "D:\\Work\\Projects\\Clipper-Core\\src\\trimmed/6e4ba3.mp3",
+        "normalized_path": null,
+        "file_url": null,
+        "published": false
+    },
+    "31240a": {
+        "url": "https://b23.tv/BV1L54y19763 ",
+        "start": "00:00:02",
+        "end": "00:00:04",
+        "uid": "31240a",
+        "download_path": "D:\\Work\\Projects\\Clipper-Core\\src\\storage/af69df.opus",
+        "trimmed_path": "D:\\Work\\Projects\\Clipper-Core\\src\\trimmed/31240a.mp3",
+        "normalized_path": null,
+        "file_url": null,
+        "published": false
+    },
+    "0e0808": {
+        "url": "https://www.bilibili.com/video/BV1h7411t7YU",
+        "start": "00:00:06",
+        "end": "00:00:07",
+        "uid": "0e0808",
+        "download_path": "D:\\Work\\Projects\\Clipper-Core\\src\\storage/88e62c.opus",
+        "trimmed_path": "D:\\Work\\Projects\\Clipper-Core\\src\\trimmed/0e0808.mp3",
+        "normalized_path": null,
+        "file_url": null,
+        "published": false
+    },
+    "c66ab6": {
+        "url": "https://b23.tv/BV1L54y19763 ",
+        "start": "00:00:02",
+        "end": "00:00:04",
+        "uid": "c66ab6",
+        "download_path": "D:\\Work\\Projects\\Clipper-Core\\src\\storage/af69df.opus",
+        "trimmed_path": "D:\\Work\\Projects\\Clipper-Core\\src\\trimmed/c66ab6.mp3",
+        "normalized_path": null,
+        "file_url": null,
+        "published": false
+    },
+    "3c1393": {
+        "url": "https://www.bilibili.com/video/BV1h7411t7YU",
+        "start": "00:00:06",
+        "end": "00:00:07",
+        "uid": "3c1393",
+        "download_path": "D:\\Work\\Projects\\Clipper-Core\\src\\storage/88e62c.opus",
+        "trimmed_path": "D:\\Work\\Projects\\Clipper-Core\\src\\trimmed/3c1393.mp3",
+        "normalized_path": null,
+        "file_url": null,
+        "published": false
+    },
+    "1a901c": {
+        "url": "https://b23.tv/BV1L54y19763 ",
+        "start": "00:00:02",
+        "end": "00:00:04",
+        "uid": "1a901c",
+        "download_path": "D:\\Work\\Projects\\Clipper-Core\\src\\storage/af69df.opus",
+        "trimmed_path": "D:\\Work\\Projects\\Clipper-Core\\src\\trimmed/1a901c.mp3",
+        "normalized_path": null,
+        "file_url": null,
+        "published": false
+    },
+    "4487a5": {
+        "url": "https://www.bilibili.com/video/BV1h7411t7YU",
+        "start": "00:00:06",
+        "end": "00:00:07",
+        "uid": "4487a5",
+        "download_path": "D:\\Work\\Projects\\Clipper-Core\\src\\storage/88e62c.opus",
+        "trimmed_path": "D:\\Work\\Projects\\Clipper-Core\\src\\trimmed/4487a5.mp3",
+        "normalized_path": null,
+        "file_url": null,
+        "published": false
+    },
+    "0393b2": {
+        "url": "https://www.bilibili.com/video/BV1h7411t7YU",
+        "start": "00:00:06",
+        "end": "00:00:07.700",
+        "uid": "0393b2",
+        "download_path": "D:\\Work\\Projects\\Clipper-Core\\src\\storage/88e62c.opus",
+        "trimmed_path": "D:\\Work\\Projects\\Clipper-Core\\src\\trimmed/0393b2.mp3",
+        "normalized_path": "D:\\Work\\Projects\\Clipper-Core\\src\\normalized/0393b2.mp3",
+        "file_url": "https://rushia.moe/clips?uid=0393b2",
+        "published": true
+    },
+    "468340": {
+        "url": "https://b23.tv/BV1L54y19763 ",
+        "start": "00:00:02",
+        "end": "00:00:04",
+        "uid": "468340",
+        "download_path": "D:\\Work\\Projects\\Clipper-Core\\src\\storage/af69df.opus",
+        "trimmed_path": "D:\\Work\\Projects\\Clipper-Core\\src\\trimmed/468340.mp3",
+        "normalized_path": "D:\\Work\\Projects\\Clipper-Core\\src\\normalized/468340.mp3",
+        "file_url": "https://rushia.moe/clips?uid=468340",
+        "published": true
     }
 }

@@ -3,10 +3,7 @@ import os
 import sys
 import time
 
-from logging import basicConfig
 from src.clipper import Clipper, ClipError
-
-basicConfig(level="INFO")
 
 """
 A bat program read contents from ../bat which contains clipper command like:
@@ -50,7 +47,7 @@ def parse_line(line):
     return url, cat, start, end, name_dict
 
 
-def main(path_to_batch="../bat", yes_to_all=False, _raise=False, dry_run=False):
+def main(path_to_batch="bat", yes_to_all=False, _raise=False, dry_run=False):
     clipper = Clipper() if not dry_run else None
     start_time = time.time()
     published = 0

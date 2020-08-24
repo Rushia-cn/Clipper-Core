@@ -169,8 +169,9 @@ class Clipper:
     def normalize_clip(self, uid):
         clip = self.search(uid)
         fn = FFmpegNormalize(normalization_type="rms",
+                             audio_codec=self.get_config("Clips", "normalize_codec"),
                              target_level=-24)
-        out = f"normalized/{clip.uid}.mp3"
+        out = f"{self.get_config('Directories', 'normalized')}/{clip.uid}.mp3"
         fn.add_media_file(clip.trimmed_path, out)
         fn.run_normalization()
         clip.normalized_path = out

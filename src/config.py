@@ -1,4 +1,5 @@
 from pathlib import Path
+import logging
 from src.exception import ClipError
 import yaml
 
