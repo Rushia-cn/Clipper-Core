@@ -88,4 +88,4 @@ def main(path_to_batch="bat", yes_to_all=False, _raise=False, dry_run=False):
           f"Used {int(time.time() - start_time)} seconds")
 
 
-main()
+main(_raise=True)

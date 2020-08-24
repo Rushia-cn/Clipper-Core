@@ -161,7 +161,7 @@ class Clipper:
         except sp.TimeoutExpired as e:
             raise ClipError(f"Timeout while trimming {uid}")
         if code != 0:
-            raise ClipError(res.stderr)
+            raise ClipError(f"{res.stdout.read()}\n{res.stderr.read()}")
         else:
             clip.trimmed_path = trimmed_path
 
