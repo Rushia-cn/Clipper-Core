@@ -1,7 +1,7 @@
 import uuid
 import logging
 from functools import wraps
-from src.config import load_yaml
+from src.load_config import load_yaml
 
 lg = logging.getLogger("Clipper")
 

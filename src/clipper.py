@@ -14,7 +14,7 @@ from src.utils import (
     log_this,
     gen_id
 )
-from src.config import load_yaml
+from src.load_config import load_yaml
 from src.exception import ClipError
 
 from requests import Session
