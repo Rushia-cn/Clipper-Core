@@ -1,0 +1,25 @@
+B2:
+  key_id: FooBar
+  app_key: FooBar
+  bucket_name: MyOwnButton
+MetaSource:
+  endpoint: https://MyButton.moe/category
+  token: FooBar
+Clips:
+  file_url: https://MyButton.moe/clips?uid={uid}
+  storage_codec: opus
+  storage_ext: opus
+  trim_codec: libmp3lame
+  trim_ext: mp3
+  normalize_codec: libmp3lame
+  normalize_ext: mp3
+Directories:
+  downloaded: src/storage
+  trimmed: src/trimmed
+  normalized: src/normalized
+FilePaths:
+  bat: bat
+  clips_lock: clips.lock
+Logging:
+  level: INFO
+  format: "[Clipper][%(levelname)s] %(asctime)s : %(message)s"

@@ -34,11 +34,3 @@ def generate_clip(url: str, start: str = None, end: str = None):
     return handle(lambda : {'uid': clipper.generate(url, start, end)})
 
 
-@app.post("/normalize")
-def normalize_clip(uid: str):
-    return handle(lambda : clipper.normalize_clip(uid))
-
-
-@app.post("/publish")
-def publish_clip(uid: str, cat: str, names: dict):
-    return handle(lambda : clipper.publish_clip(uid, cat, names))
