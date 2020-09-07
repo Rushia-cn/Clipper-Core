@@ -559,5 +559,27 @@
         "normalized_path": "D:\\Work\\Projects\\Clipper-Core\\src\\normalized/1c3139.mp3",
         "file_url": "https://rushia.moe/clips?uid=1c3139",
         "published": true
+    },
+    "04c4d3": {
+        "url": "https://youtu.be/LrkL7PPQ4dU",
+        "start": "00:02:58.864",
+        "end": "0:02:59:500",
+        "uid": "04c4d3",
+        "download_path": "D:\\Work\\Projects\\Clipper-Core\\src\\storage/04c4d3.opus",
+        "trimmed_path": "D:\\Work\\Projects\\Clipper-Core\\src\\trimmed/04c4d3.mp3",
+        "normalized_path": "D:\\Work\\Projects\\Clipper-Core\\src\\normalized/04c4d3.mp3",
+        "file_url": null,
+        "published": false
+    },
+    "59ffb0": {
+        "url": "https://youtu.be/LrkL7PPQ4dU",
+        "start": "00:02:58.864",
+        "end": "00:02:59.500",
+        "uid": "59ffb0",
+        "download_path": "D:\\Work\\Projects\\Clipper-Core\\src\\storage/04c4d3.opus",
+        "trimmed_path": "D:\\Work\\Projects\\Clipper-Core\\src\\trimmed/59ffb0.mp3",
+        "normalized_path": "D:\\Work\\Projects\\Clipper-Core\\src\\normalized/59ffb0.mp3",
+        "file_url": "https://rushia.moe/clips?uid=59ffb0",
+        "published": true
     }
 }

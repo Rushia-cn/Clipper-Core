@@ -2,6 +2,7 @@ import re
 import json
 import atexit
 import logging
+import functools
 import subprocess as sp
 from pathlib import Path
 from typing import Optional, Dict, AnyStr
@@ -134,7 +135,6 @@ class Clipper:
             'outtmpl': download_path
         }) as ytdl:
             ytdl.download([clip.url])
-        print("done")
         clip.download_path = download_path % \
                              {'ext': self.get_config("Clips", "storage_ext")}
         return True
@@ -143,11 +143,12 @@ class Clipper:
     def trim_clip(self, uid):
         clip = self.search(uid)
         trimmed_path = f"{self.get_config('Directories', 'trimmed')}" \
-                       f"/{uid}.{self.get_config('Clips', 'trimmed_ext')}"
+                       f"/{uid}.{self.get_config('Clips', 'trim_ext')}"
         cmd = [
             'ffmpeg',
             '-vn',
             '-y',
+            '-acodec', self.get_config('Clips', 'trim_codec'),
             '-i', clip.download_path,
             '-ss', clip.start
         ]
@@ -171,7 +172,7 @@ class Clipper:
         fn = FFmpegNormalize(normalization_type="rms",
                              audio_codec=self.get_config("Clips", "normalize_codec"),
                              target_level=-24)
-        out = f"{self.get_config('Directories', 'normalized')}/{clip.uid}.mp3"
+        out = f"{self.get_config('Directories', 'normalized')}/{clip.uid}.{self.get_config('Clips', 'normalize_ext')}"
         fn.add_media_file(clip.trimmed_path, out)
         fn.run_normalization()
         clip.normalized_path = out
@@ -182,7 +183,7 @@ class Clipper:
         full_name = f"{clip.uid}.mp3"
         self._bucket.upload_local_file(local_file=clip.normalized_path,
                                        file_name=full_name)
-        clip.file_url = self.get_config("Clips", "file_name").format(uid=uid)
+        clip.file_url = self.get_config("Clips", "file_url").format(uid=uid)
 
     @log_this
     def generate(self, url, start, end, upload=True):
