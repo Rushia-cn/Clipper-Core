@@ -148,7 +148,6 @@ class Clipper:
             'ffmpeg',
             '-vn',
             '-y',
-            '-acodec', self.get_config('Clips', 'trim_codec'),
             '-i', clip.download_path,
             '-ss', clip.start
         ]

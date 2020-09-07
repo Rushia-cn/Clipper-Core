@@ -581,5 +581,16 @@
         "normalized_path": "D:\\Work\\Projects\\Clipper-Core\\src\\normalized/59ffb0.mp3",
         "file_url": "https://rushia.moe/clips?uid=59ffb0",
         "published": true
+    },
+    "04baff": {
+        "url": "https://youtu.be/LrkL7PPQ4dU",
+        "start": "00:02:58.864",
+        "end": "00:02:59.500",
+        "uid": "04baff",
+        "download_path": "D:\\Work\\Projects\\Clipper-Core\\src\\storage/04c4d3.opus",
+        "trimmed_path": null,
+        "normalized_path": null,
+        "file_url": null,
+        "published": false
     }
 }

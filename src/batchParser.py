@@ -4,7 +4,7 @@ from typing import Optional, List, TextIO
 from src.exception import ClipError
 
 
-__all__ = "load", "dump"
+__all__ = "load", "dump", "ButtonBatchLine"
 
 
 @dataclass
