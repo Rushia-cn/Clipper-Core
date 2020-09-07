@@ -7,6 +7,7 @@ import subprocess as sp
 from pathlib import Path
 from typing import Optional, Dict, AnyStr
 from dataclasses import dataclass, field, asdict
+from datetime import datetime
 from time import time
 
 from src.utils import (
@@ -40,6 +41,12 @@ class Clip:
     normalized_path: str = None
     file_url: str = None
     published: bool = False
+
+    @property
+    def saves(self):
+        json = asdict(self)
+        json["edit_time"] = datetime.now().isoformat()
+        return json
 
 
 class Clipper:
@@ -242,7 +249,7 @@ class Clipper:
             log("Clipper.clips is either not loaded or does not exist, quit without saving")
             return
         with open(self.get_config("FilePaths", "clips_lock"), "w") as f:
-            json.dump({clip.uid: asdict(clip) for clip in self.clips.values()}, f, indent=4)
+            json.dump({clip.uid: clip.saves for clip in self.clips.values()}, f, indent=4)
 
 
 class ClipsMeta:

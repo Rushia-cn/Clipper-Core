@@ -29,8 +29,8 @@ def post_clip(url: str, start: str = None, end: str = None):
     return handle(lambda : {'uid': clipper.new_clip(url, start, end)})
 
 
-@app.post("/generate")
-def generate_clip(url: str, start: str = None, end: str = None):
+@app.post("/publish")
+def publish_clip(url: str, start: str = None, end: str = None):
     return handle(lambda : {'uid': clipper.generate(url, start, end)})
 
 
