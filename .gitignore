@@ -4,6 +4,7 @@ src/storage
 src/trimmed
 clips.lock
 config.yml
+.run
 
 # Created by .ignore support plugin (hsz.mobi)
 ### Python template
