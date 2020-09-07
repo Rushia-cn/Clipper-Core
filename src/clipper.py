@@ -49,6 +49,10 @@ class Clip:
         return json
 
 
+def multiline_lambda(*ABUSED_PYTHON_LAMBDA_OR_OTHER_OBJECT):
+    return ABUSED_PYTHON_LAMBDA_OR_OTHER_OBJECT[-1]
+
+
 class Clipper:
     _time_pattern = re.compile(r"\d*:[0-5]\d?:[0-5]\d?(.\d{3})?")
     _cmd_pattern = re.compile(r"(https?://\w*?.\w+?\.\w{2,}/.*?)\s"
@@ -78,11 +82,11 @@ class Clipper:
             level=self.c["Logging"]["level"],
             format=self.c["Logging"]["format"]
         )
-        self.load_local_clips()
         self.meta = ClipsMeta.from_url(
             self.get_config("MetaSource", "endpoint"),
             self.get_config("MetaSource", "token")
         )
+        self.load_local_clips()
         key_id = self.get_config("B2", "key_id")
         app_key = self.get_config("B2", "app_key")
         log("Initializing B2")
@@ -98,7 +102,14 @@ class Clipper:
     @log_this
     def load_local_clips(self):
         with open(self.c["FilePaths"]["clips_lock"], "r") as f:
-            self.clips = {k: Clip(**v) for k, v in json.load(f).items()}
+            # DO NOT USE THIS IN ACTUAL CODE. ITS JUST FOR FUN
+            local_clips = {k: multiline_lambda(v.pop("edit_time"), Clip(**v)) for k, v in json.load(f).items()}
+        meta_clips = self.meta.clips
+        for k, v in local_clips.items():
+            if v.published and not meta_clips.get(k):
+                v.published = False
+                log(f"Set published flag for {v.uid} to false according to MetaSource")
+        self.clips = local_clips
 
     def search(self, uid) -> Optional['Clip']:
         if uid is Clip:
